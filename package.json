@@ -1,0 +1,16 @@
+{
+  "name": "training-webpack",
+  "private": true,
+  "version": "1.0.0",
+  "description": "webpack training",
+  "main": "index.js",
+  "keywords": [
+    "webpack"
+  ],
+  "workspaces": [
+    "plugin/*",
+    "loader/*"
+  ],
+  "author": "vfan140",
+  "license": "MIT"
+}
