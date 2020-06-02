@@ -4,6 +4,35 @@
 
 ### 插件
 
+* CopyWebpackPlugin
+
+CopyWebpackPlugin用于拷贝文件到构建结果中。
+
+```js
+// 使用
+new CopyWebpackPlugin({
+  patterns: [
+    {
+      from: 'examples/assets',
+      to: 'assets'
+    }
+  ]
+})
+
+// from目录相对于项目根路径、to目录相对于输出目录
+
+```
+
+```js
+// 核心逻辑
+
+compilation.hooks.additionalAssets.tapAsync('~', async (callback) => {
+  // 读取文件内容content，并生成source实例，插入compilation.assets
+  compilation.assets[to] = new RawSource(content)
+})
+
+```
+
 *  DefinePlugin
 
 DefinePlugin用于创建一组编译时可配置的全局变量。因为变量是在编译时配置的，所以可以通过当前环境不同(development、production)来创建不同的变量。
