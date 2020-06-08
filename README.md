@@ -4,6 +4,30 @@
 
 ### 插件
 
+* CleanWebpackPlugin
+
+CleanWebpackPlugin用于清理webpack指定输出目录。
+
+```js
+// 使用
+new CleanWebpackPlugin()
+
+// 清除ouput配置的目录
+
+```
+
+```js
+// 核心逻辑
+apply (compiler) {
+  this.output = compiler.options.output.path
+  compiler.hooks.emit.tap('clean-webpack-plugin', () => {
+    // del库，采用glob模式删除文件
+    del.sync(`**/*`, { cwd: this.output })
+  })
+}
+
+```
+
 * CopyWebpackPlugin
 
 CopyWebpackPlugin用于拷贝文件到构建结果中。
